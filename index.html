@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Der Barilla Shop in Celle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16243f; --navy-deep:#101b30; --navy-mid:#1c2e4f;
+    --gold:#c4a14e; --gold-soft:#d6b96e;
+    --red:#d42130; --cream:#f4efe5; --cream-line:#e3dccb;
+    --white:#fff; --ink:#2a3142; --muted:#9aa6bd;
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--navy);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .display{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.01em;line-height:1.02;text-transform:uppercase}
+  section{scroll-margin-top:84px}
+
+  /* section heading */
+  .eyebrow{font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--gold)}
+  .sec-head{text-align:center;max-width:620px;margin:0 auto 48px}
+  .sec-head h2{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(28px,3.6vw,44px);line-height:1.05;margin:12px 0}
+  .sec-head .rule{width:54px;height:3px;background:var(--red);margin:16px auto 0}
+  .sec-head p{font-size:16px;margin-top:18px}
+
+  /* ---------- HEADER ---------- */
+  header{background:var(--navy);border-bottom:2px solid var(--gold);position:sticky;top:0;z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0}
+  .brand{display:flex;flex-direction:column;line-height:1;color:#fff}
+  .brand .dal{font-size:11px;letter-spacing:.35em;color:var(--gold);margin-bottom:2px}
+  .brand .name{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:32px}
+  .brand .name sup{font-size:11px;font-style:normal;font-weight:600}
+  .brand .tag{font-size:9px;letter-spacing:.3em;color:#cfd7e6;margin-top:3px}
+  .menu{display:flex;gap:32px;align-items:center}
+  .menu a{color:#e7ecf5;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 0;position:relative}
+  .menu a:hover{color:#fff}
+  .menu a.active{color:#fff}
+  .menu a.active::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--red)}
+  .btn-shop{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:11px 20px;border-radius:30px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,transform .2s}
+  .btn-shop:hover{background:#b71926;transform:translateY(-1px)}
+  .btn-shop svg{width:15px;height:15px}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;margin:-8px 0}
+  .burger span{display:block;width:26px;height:2px;background:#fff;margin:5px 0;transition:transform .25s ease,opacity .2s ease}
+  .burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.is-open span:nth-child(2){opacity:0}
+  .burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .menu-shop{display:none}
+
+  /* ---------- HERO ---------- */
+  .hero{background:var(--navy);overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding-top:66px;padding-bottom:76px}
+  .hero h1{color:#fff;font-size:clamp(40px,5.4vw,72px)}
+  .hero .sub{color:var(--gold);font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(15px,1.8vw,22px);margin:18px 0 26px}
+  .hero p.lead{color:#cdd5e4;font-size:16px;max-width:430px;margin-bottom:34px}
+  .feat-list{display:flex;flex-direction:column;gap:18px}
+  .feat-row{display:flex;gap:16px;align-items:flex-start}
+  .feat-row .ic svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1.5}
+  .feat-row span{color:#eef2f8;font-size:15px;line-height:1.4;padding-top:4px}
+  .hero-visual{position:relative;min-height:430px}
+  .badge{position:absolute;top:-18px;right:-6px;z-index:3;width:148px;height:148px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;box-shadow:0 14px 34px rgba(0,0,0,.35);transform:rotate(-4deg)}
+  .badge svg{width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:1.6;margin-bottom:6px}
+  .badge b{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:13px;line-height:1.2}
+  .scene{width:100%;min-height:430px;border-radius:18px;overflow:hidden;background:radial-gradient(120% 90% at 70% 30%,#24375d 0%,#16243f 60%);border:1px solid rgba(196,161,78,.25);display:flex;align-items:center;justify-content:center;padding:24px}
+  .scene svg{width:100%;height:auto}
+
+  /* ---------- FEATURE STRIP ---------- */
+  .strip{background:var(--cream)}
+  .strip .wrap{padding:60px 28px}
+  .cols4{display:grid;grid-template-columns:repeat(4,1fr)}
+  .col{text-align:center;padding:0 26px;border-right:1px solid var(--cream-line)}
+  .col:last-child{border-right:0}
+  .col .badge-ic{width:74px;height:74px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+  .col .badge-ic svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1.5}
+  .col h3{font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;color:var(--navy);font-size:15px;letter-spacing:.04em;margin-bottom:10px}
+  .col p{font-size:14px;color:#5c6478}
+
+  /* ---------- PRODUKTE ---------- */
+  .produkte{background:#fff}
+  .produkte .wrap{padding:78px 28px}
+  .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .card{background:var(--cream);border:1px solid var(--cream-line);border-radius:14px;overflow:hidden;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,27,48,.15)}
+  .prod-art{background:linear-gradient(160deg,#1c2e4f,#101b30);padding:22px;display:flex;align-items:center;justify-content:center}
+  .prod-art svg{height:180px;width:auto}
+  .card-body{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
+  .card-body .kind{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .card-body h3{font-family:'Archivo',sans-serif;font-weight:700;color:var(--navy);font-size:18px;margin:6px 0 8px;text-transform:uppercase;letter-spacing:.02em}
+  .card-body p{font-size:13.5px;color:#5c6478;flex:1}
+  .card-body .tag{margin-top:14px;align-self:flex-start;background:var(--navy);color:#fff;font-size:11px;font-weight:600;letter-spacing:.06em;padding:5px 12px;border-radius:20px;text-transform:uppercase}
+
+  /* ---------- REZEPTE ---------- */
+  .rezepte{background:var(--cream)}
+  .rezepte .wrap{padding:78px 28px}
+  .rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .rec-card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--cream-line);transition:transform .25s,box-shadow .25s}
+  .rec-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,27,48,.13)}
+  .rec-art{background:linear-gradient(160deg,#22345a,#101b30);display:flex;align-items:center;justify-content:center;padding:18px}
+  .rec-art svg{width:230px;height:auto}
+  .rec-body{padding:20px 22px 24px}
+  .rec-meta{display:flex;gap:16px;font-size:12px;color:var(--gold);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}
+  .rec-meta span{display:inline-flex;align-items:center;gap:5px}
+  .rec-meta svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2}
+  .rec-body h3{font-family:'Archivo',sans-serif;font-weight:700;color:var(--navy);font-size:20px;text-transform:uppercase;letter-spacing:.01em;margin-bottom:8px}
+  .rec-body p{font-size:14px;color:#5c6478}
+
+  /* ---------- ÜBER BARILLA ---------- */
+  .ueber{background:var(--navy)}
+  .ueber .wrap{padding:84px 28px}
+  .ueber .sec-head h2,.ueber .sec-head p{color:#fff}
+  .ueber .sec-head p{color:#cdd5e4}
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:8px}
+  .story .text p{color:#cdd5e4;font-size:15.5px;margin-bottom:16px}
+  .story .text p b{color:#fff}
+  .crest{display:flex;align-items:center;justify-content:center}
+  .crest svg{width:260px;height:auto}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:54px;border-top:1px solid rgba(196,161,78,.3);padding-top:40px}
+  .stat{text-align:center}
+  .stat .num{font-family:'Archivo',sans-serif;font-weight:800;color:var(--gold);font-size:40px;line-height:1}
+  .stat .lbl{color:#cdd5e4;font-size:13px;margin-top:8px;letter-spacing:.04em}
+
+  /* ---------- STANDORT ---------- */
+  .store{background:#fff}
+  .store .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center;padding:78px 28px}
+  .store h2{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;color:var(--navy);font-size:clamp(28px,3.4vw,40px);line-height:1.04}
+  .store .rule{width:54px;height:3px;background:var(--red);margin:18px 0 22px}
+  .store p.intro{color:#5c6478;font-size:16px;max-width:380px;margin-bottom:30px}
+  .info-row{display:flex;gap:14px;margin-bottom:22px;align-items:flex-start}
+  .info-row .pin svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:1.6}
+  .info-row h4{font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;color:var(--navy);font-size:14px;letter-spacing:.05em;margin-bottom:3px}
+  .info-row .lines{color:#444c60;font-size:15px;line-height:1.5}
+  .info-row .lines b{color:var(--navy)}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .shot{border-radius:10px;min-height:300px;overflow:hidden;border:1px solid rgba(196,161,78,.18);background:linear-gradient(160deg,#1c2e4f,#101b30);display:flex;align-items:center;justify-content:center;padding:14px}
+  .shot svg{width:100%;height:auto}
+
+  /* ---------- CTA ---------- */
+  .cta{background:var(--navy-deep);color:#fff}
+  .cta .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;padding:48px 28px}
+  .cta .bag svg{width:84px;height:84px;stroke:var(--gold);fill:none;stroke-width:1.3}
+  .cta h2{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;color:var(--gold);font-size:clamp(20px,2.4vw,30px);line-height:1.08}
+  .cta p{color:#cdd5e4;font-size:15px;margin-top:12px;max-width:430px}
+  .qr-block{display:flex;align-items:center;gap:18px}
+  .qr-text .small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .qr-text .addr{display:flex;gap:10px;align-items:flex-start}
+  .qr-text .addr svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.6;flex:0 0 auto}
+  .qr-text .addr .lines{font-size:14px;color:#e7ecf5;line-height:1.5}
+  .qr-text .addr .lines b{color:#fff}
+  .qr-img{width:122px;height:122px;background:#fff;border-radius:10px;padding:10px;display:flex;align-items:center;justify-content:center}
+  .qr-img svg{width:100%;height:100%}
+  .scan{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:var(--gold);font-size:20px;margin-top:8px;text-align:center}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep);border-top:1px solid rgba(255,255,255,.08)}
+  footer .wrap{display:flex;align-items:center;justify-content:center;gap:26px;padding:24px 28px;flex-wrap:wrap}
+  footer .lbl{color:#cdd5e4;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+  .socials{display:flex;gap:14px}
+  .socials a{width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+  .socials a:hover{transform:translateY(-2px)}
+  .socials svg{width:17px;height:17px;fill:var(--navy)}
+  .divider{width:1px;height:22px;background:rgba(255,255,255,.2)}
+  footer .url{color:#cdd5e4;font-size:13px;letter-spacing:.08em}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* responsive */
+  @media(max-width:980px){
+    .prod-grid{grid-template-columns:repeat(2,1fr)}
+    .rec-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:900px){
+    /* ---- mobile nav: vollbreites Aufklapp-Panel statt Inline-Dropdown ---- */
+    .burger{display:block}
+    .menu{
+      display:none;
+      position:absolute;left:0;right:0;top:100%;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:var(--navy-deep);
+      border-bottom:2px solid var(--gold);
+      box-shadow:0 18px 40px rgba(0,0,0,.45);
+      padding:6px 0 14px;
+    }
+    .menu.open{display:flex}
+    .menu a{
+      padding:15px 24px;font-size:15px;letter-spacing:.08em;
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .menu a.active{color:var(--gold)}
+    .menu a.active::after{display:none}
+    .menu-shop{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      margin:14px 24px 0;padding:14px 20px;border-bottom:0!important;
+      background:var(--red);color:#fff;border-radius:30px;
+      font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    }
+    .menu-shop svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+    /* Desktop-CTA im Header ausblenden (verhinderte das Überlaufen) */
+    .nav > .btn-shop{display:none}
+
+    .hero .wrap{grid-template-columns:1fr;padding-top:44px;padding-bottom:50px}
+    .hero-visual{order:-1;min-height:300px}.scene{min-height:300px}
+    .badge{width:112px;height:112px;top:-6px;right:2px}
+    .cols4{grid-template-columns:repeat(2,1fr);gap:34px 0}
+    .col{border-right:0}.col:nth-child(odd){border-right:1px solid var(--cream-line)}
+    .story{grid-template-columns:1fr;gap:34px}.crest{order:-1}
+    .crest svg{width:200px}
+    .store .wrap{grid-template-columns:1fr;gap:32px}
+    .shot{min-height:170px}
+    .cta .wrap{grid-template-columns:1fr;gap:26px;text-align:center}
+    .cta .bag{display:none}.qr-block{flex-direction:column}.qr-text .addr{justify-content:center}
+  }
+  @media(max-width:560px){
+    /* engere Seitenränder auf kleinen Phones */
+    .wrap{padding-left:18px;padding-right:18px}
+    .hero .wrap{padding-top:38px;padding-bottom:44px}
+    .strip .wrap{padding:42px 18px}
+    .produkte .wrap,.rezepte .wrap{padding:54px 18px}
+    .ueber .wrap{padding:58px 18px}
+    .store .wrap{padding:50px 18px}
+    .cta .wrap{padding:42px 18px}
+    .sec-head{margin-bottom:34px}
+
+    .brand .name{font-size:28px}
+    .menu a,.menu-shop{margin-left:18px;margin-right:18px}
+    .menu a{padding-left:6px;padding-right:6px}
+
+    .prod-grid,.rec-grid{grid-template-columns:1fr}
+    .cols4{grid-template-columns:1fr}
+    .col{border-right:0!important;border-bottom:1px solid var(--cream-line);padding:0 0 28px}
+    .col:last-child{border-bottom:0;padding-bottom:0}
+    .stats{grid-template-columns:1fr;gap:24px;margin-top:40px;padding-top:32px}
+
+    /* Galerie als kompakter Thumbnail-Streifen statt riesiger Einzelbilder */
+    .gallery{grid-template-columns:repeat(3,1fr);gap:8px}
+    .shot{min-height:0;padding:8px;border-radius:8px}
+
+    .rec-meta{flex-wrap:wrap;gap:8px 14px}
+    .hero h1{font-size:clamp(34px,8.5vw,44px)}
+    .hero p.lead{margin-bottom:28px}
+  }
+  @media(max-width:380px){
+    .menu a,.menu-shop{margin-left:14px;margin-right:14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="wrap nav">
+    <a href="#shop" class="brand">
+      <span class="dal">DAL 1877</span>
+      <span class="name">Barilla<sup>&reg;</sup></span>
+      <span class="tag">A SIGN OF LOVE</span>
+    </a>
+    <nav class="menu" id="menu">
+      <a href="#produkte" data-sec="produkte">Produkte</a>
+      <a href="#rezepte" data-sec="rezepte">Rezepte</a>
+      <a href="#ueber" data-sec="ueber">Über Barilla</a>
+      <a href="#shop" data-sec="shop">Shop Celle</a>
+      <a href="#standort" class="menu-shop">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Shop besuchen
+      </a>
+    </nav>
+    <a href="#standort" class="btn-shop">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Shop besuchen
+    </a>
+    <button class="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===== HERO / SHOP CELLE ===== -->
+<section class="hero" id="shop">
+  <div class="wrap">
+    <div>
+      <h1 class="display">Der Barilla<br>Shop in Celle</h1>
+      <p class="sub">Entdecken. Geniessen. Mitnehmen.</p>
+      <p class="lead">Willkommen im Barilla Werkshop in Celle – Ihr Ort für echte italienische Pasta, feinste Saucen und besondere Genussmomente.</p>
+      <div class="feat-list">
+        <div class="feat-row"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 8 3 5 6 5c2 0 3 1.2 4 2.5C11 6.2 12 5 14 5c3 0 5 3 3.5 7-2.5 4.5-5.5 9-5.5 9z"/></svg></div><span>Original italienische Qualität seit 1877</span></div>
+        <div class="feat-row"><div class="ic"><svg viewBox="0 0 24 24"><path d="M11 3C7 6 6 10 9 14c2 2.6 2 4 2 7"/><path d="M11 8c3-1 6 1 7 5"/></svg></div><span>Ausgewählte Produkte für genießerische Vielfalt</span></div>
+        <div class="feat-row"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8s-3-5-5.5-3S8 8 12 8zM12 8s3-5 5.5-3S16 8 12 8z"/></svg></div><span>Ideen, Rezepte &amp; Inspiration aus der Barilla Welt</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="badge">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 8 3 5 6 5c2 0 3 1.2 4 2.5C11 6.2 12 5 14 5c3 0 5 3 3.5 7-2.5 4.5-5.5 9-5.5 9z"/></svg>
+        <b>Italienischer<br>Genuss direkt<br>in Celle</b>
+      </div>
+      <div class="scene">
+        <!-- Original-Illustration: Tüte mit Pasta & Sauce. Hier später eigenes Foto einsetzen. -->
+        <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- flying pasta -->
+          <g fill="#d6b96e">
+            <path d="M150 40 q12 -14 24 0 q-12 14 -24 0z"/><path d="M120 30 q10 -12 20 0 q-10 12 -20 0z" opacity=".8"/>
+            <rect x="195" y="34" width="7" height="26" rx="3.5" transform="rotate(20 198 47)"/>
+            <rect x="215" y="44" width="7" height="22" rx="3.5" transform="rotate(-15 218 55)"/>
+            <circle cx="170" cy="64" r="6"/><circle cx="135" cy="56" r="5" opacity=".8"/>
+          </g>
+          <g fill="#5fa04b"><ellipse cx="186" cy="30" rx="7" ry="4" transform="rotate(30 186 30)"/><ellipse cx="160" cy="24" rx="6" ry="3.5" transform="rotate(-20 160 24)"/></g>
+          <!-- bag -->
+          <path d="M70 96 h150 l14 168 a8 8 0 01-8 9 H64 a8 8 0 01-8 -9z" fill="#1c2e4f" stroke="#c4a14e" stroke-width="2"/>
+          <path d="M104 96 c0 -26 16 -40 41 -40 s41 14 41 40" fill="none" stroke="#c4a14e" stroke-width="3"/>
+          <ellipse cx="145" cy="180" rx="58" ry="22" fill="#d42130"/>
+          <text x="145" y="188" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="26">Barilla</text>
+          <text x="145" y="214" text-anchor="middle" fill="#c4a14e" font-family="Archivo" font-size="9" letter-spacing="3">A SIGN OF LOVE</text>
+          <!-- sauce jar -->
+          <g transform="translate(250 110)">
+            <rect x="6" y="0" width="40" height="14" rx="3" fill="#16243f"/>
+            <path d="M2 16 h48 a4 4 0 014 4 v70 a8 8 0 01-8 8 H6 a8 8 0 01-8 -8 V20 a4 4 0 014 -4z" fill="#b5202b"/>
+            <rect x="4" y="40" width="44" height="44" rx="3" fill="#f4efe5"/>
+            <ellipse cx="26" cy="54" rx="18" ry="7" fill="#d42130"/>
+            <text x="26" y="58" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11">Barilla</text>
+            <text x="26" y="74" text-anchor="middle" fill="#16243f" font-family="Archivo" font-size="7" letter-spacing="1">BASILICO</text>
+          </g>
+          <!-- bowl -->
+          <g transform="translate(40 232)">
+            <ellipse cx="70" cy="34" rx="76" ry="22" fill="#f0ece2"/>
+            <path d="M-6 30 a76 22 0 00152 0z" fill="#e7e1d4"/>
+            <g stroke="#e0b75a" stroke-width="3" fill="none" stroke-linecap="round">
+              <path d="M16 30 q26 -16 52 -2"/><path d="M30 34 q30 -12 60 0"/><path d="M52 26 q24 -10 56 4"/>
+            </g>
+            <circle cx="60" cy="28" r="4" fill="#d42130"/><circle cx="92" cy="32" r="4" fill="#d42130"/>
+            <ellipse cx="78" cy="22" rx="6" ry="3" fill="#5fa04b" transform="rotate(20 78 22)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURE STRIP ===== -->
+<section class="strip">
+  <div class="wrap">
+    <div class="cols4 reveal">
+      <div class="col"><div class="badge-ic"><svg viewBox="0 0 24 24"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg></div><h3>Exklusive Auswahl</h3><p>Entdecken Sie eine große Vielfalt an Barilla Produkten – viele davon exklusiv im Werkshop.</p></div>
+      <div class="col"><div class="badge-ic"><svg viewBox="0 0 24 24"><path d="M4 13h16a8 8 0 01-16 0z"/><path d="M9 6c0-1 1-1 1-2M13 6c0-1 1-1 1-2M11 9c0-1 1-1 1-2"/></svg></div><h3>Probieren &amp; Geniessen</h3><p>Lassen Sie sich inspirieren und probieren Sie ausgewählte Produkte vor Ort.</p></div>
+      <div class="col"><div class="badge-ic"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8s-3-5-5.5-3S8 8 12 8zM12 8s3-5 5.5-3S16 8 12 8z"/></svg></div><h3>Perfekt zum Verschenken</h3><p>Hochwertige Geschenkideen für Pasta-Liebhaber und Genießer.</p></div>
+      <div class="col"><div class="badge-ic"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M14 20c0-3 3-5 6-5"/></svg></div><h3>Persönlich für Sie da</h3><p>Unser Team berät Sie gerne und teilt die Leidenschaft für echte italienische Pasta.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUKTE ===== -->
+<section class="produkte" id="produkte">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Unser Sortiment</span>
+      <h2>Produkte</h2>
+      <div class="rule"></div>
+      <p>Von der klassischen Pasta bis zur feinen Sauce – eine Auswahl unserer Lieblinge, die Sie im Werkshop in Celle finden.</p>
+    </div>
+    <div class="prod-grid reveal" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- ===== REZEPTE ===== -->
+<section class="rezepte" id="rezepte">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Inspiration aus der Barilla Welt</span>
+      <h2>Rezepte</h2>
+      <div class="rule"></div>
+      <p>Einfache, ehrliche Gerichte für jeden Tag – schnell nachgekocht und immer ein Stück Italien auf dem Teller.</p>
+    </div>
+    <div class="rec-grid reveal" id="recGrid"></div>
+  </div>
+</section>
+
+<!-- ===== ÜBER BARILLA ===== -->
+<section class="ueber" id="ueber">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Seit 1877</span>
+      <h2>Über Barilla</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="story reveal">
+      <div class="text">
+        <p><b>Eine Geschichte, die in Parma begann.</b> 1877 eröffnete Pietro Barilla seinen Brot- und Pastaladen in Parma. Aus diesem kleinen Geschäft wurde über Generationen ein Familienunternehmen, das die Liebe zu echter italienischer Küche in die ganze Welt trägt.</p>
+        <p>Bis heute steht jeder Teller Barilla für dasselbe Versprechen: beste Zutaten, ehrliches Handwerk und der einfache Genuss, der Menschen an einem Tisch zusammenbringt.</p>
+        <p>Im <b>Barilla Werkshop in Celle</b> erleben Sie diese Geschichte hautnah – mit ausgewählten Produkten, Verkostungen und einem Team, das seine Leidenschaft gerne mit Ihnen teilt.</p>
+      </div>
+      <div class="crest">
+        <svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="120" cy="100" r="92" fill="none" stroke="#c4a14e" stroke-width="2"/>
+          <circle cx="120" cy="100" r="82" fill="#1c2e4f"/>
+          <text x="120" y="74" text-anchor="middle" fill="#c4a14e" font-family="Archivo" font-size="12" letter-spacing="5">DAL 1877</text>
+          <ellipse cx="120" cy="104" rx="64" ry="24" fill="#d42130"/>
+          <text x="120" y="113" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-style="italic" font-weight="900" font-size="30">Barilla</text>
+          <text x="120" y="142" text-anchor="middle" fill="#c4a14e" font-family="Archivo" font-size="9" letter-spacing="3">A SIGN OF LOVE</text>
+        </svg>
+      </div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="num">1877</div><div class="lbl">Gegründet in Parma</div></div>
+      <div class="stat"><div class="num">100+</div><div class="lbl">Länder weltweit</div></div>
+      <div class="stat"><div class="num">No.1</div><div class="lbl">Pasta-Marke Italiens</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STANDORT (SHOP CELLE DETAILS) ===== -->
+<section class="store" id="standort">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Ihr Barilla Werkshop in Celle</h2>
+      <div class="rule"></div>
+      <p class="intro">Tauchen Sie ein in die Welt von Barilla und erleben Sie Qualität, die man schmeckt – direkt in Ihrer Nähe.</p>
+      <div class="info-row"><div class="pin"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Barilla Werkshop in Celle</h4><div class="lines">Barilla Shop<br>Wasastraße 10<br>29229 Celle</div></div></div>
+      <div class="info-row"><div class="pin"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><h4>Öffnungszeiten</h4><div class="lines"><b>Mo – Fr:</b> 10:00 – 18:00 Uhr<br><b>Sa:</b>&nbsp;&nbsp;&nbsp;10:00 – 14:00 Uhr</div></div></div>
+      <div class="info-row"><div class="pin"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 8 3 5 6 5c2 0 3 1.2 4 2.5C11 6.2 12 5 14 5c3 0 5 3 3.5 7-2.5 4.5-5.5 9-5.5 9z"/></svg></div><div><div class="lines">Wir freuen uns auf Ihren Besuch!</div></div></div>
+    </div>
+    <div class="gallery reveal">
+      <div class="shot">
+        <svg viewBox="0 0 160 200"><rect width="160" height="200" rx="8" fill="#16243f"/><rect x="14" y="120" width="132" height="64" rx="4" fill="#2a3b5e"/><g fill="#1c2e4f" stroke="#c4a14e" stroke-width="1"><rect x="24" y="96" width="22" height="34" rx="2"/><rect x="50" y="96" width="22" height="34" rx="2"/><rect x="88" y="96" width="22" height="34" rx="2"/><rect x="114" y="96" width="22" height="34" rx="2"/></g><ellipse cx="80" cy="40" rx="44" ry="16" fill="#d42130"/><text x="80" y="46" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="18">Barilla</text><text x="80" y="195" text-anchor="middle" fill="#9aa6bd" font-size="8" letter-spacing="2">LADENINNENRAUM</text></svg>
+      </div>
+      <div class="shot">
+        <svg viewBox="0 0 160 200"><rect width="160" height="200" rx="8" fill="#101b30"/><path d="M80 16 v70" stroke="#c9d3e6" stroke-width="3"/><path d="M70 18 v22M80 16 v24M90 18 v22" stroke="#c9d3e6" stroke-width="2"/><g stroke="#e0b75a" stroke-width="3.5" fill="none" stroke-linecap="round"><path d="M58 96 q22 -14 44 0 q-22 26 -44 6"/><path d="M52 112 q28 -10 56 4 q-26 22 -56 2"/><path d="M58 128 q22 -8 44 6"/></g><circle cx="74" cy="108" r="4" fill="#d42130"/><circle cx="96" cy="120" r="4" fill="#d42130"/><ellipse cx="84" cy="98" rx="7" ry="3.5" fill="#5fa04b" transform="rotate(20 84 98)"/><text x="80" y="190" text-anchor="middle" fill="#9aa6bd" font-size="8" letter-spacing="2">PASTA AL POMODORO</text></svg>
+      </div>
+      <div class="shot">
+        <svg viewBox="0 0 160 200"><rect width="160" height="200" rx="8" fill="#16243f"/><g fill="none" stroke="#3a4d72" stroke-width="2"><line x1="10" y1="60" x2="150" y2="60"/><line x1="10" y1="110" x2="150" y2="110"/><line x1="10" y1="160" x2="150" y2="160"/></g><g fill="#1c2e4f" stroke="#c4a14e" stroke-width="1"><rect x="18" y="24" width="20" height="34" rx="2"/><rect x="42" y="24" width="20" height="34" rx="2"/><rect x="66" y="24" width="20" height="34" rx="2"/><rect x="90" y="24" width="20" height="34" rx="2"/><rect x="114" y="24" width="20" height="34" rx="2"/><rect x="30" y="74" width="20" height="34" rx="2"/><rect x="54" y="74" width="20" height="34" rx="2"/><rect x="78" y="74" width="20" height="34" rx="2"/><rect x="102" y="74" width="20" height="34" rx="2"/></g><text x="80" y="192" text-anchor="middle" fill="#9aa6bd" font-size="8" letter-spacing="2">PRODUKTREGALE</text></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <div class="wrap">
+    <div class="bag"><svg viewBox="0 0 24 24"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg></div>
+    <div>
+      <h2>Kommen Sie vorbei und entdecken<br>Sie Barilla mit allen Sinnen.</h2>
+      <p>Wir freuen uns auf Ihren Besuch im Barilla Werkshop in Celle!</p>
+    </div>
+    <div class="qr-block">
+      <div class="qr-text">
+        <div class="small">Jetzt Standort speichern:</div>
+        <div class="addr"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="lines"><b>Barilla Werkshop in Celle</b><br>Barilla Shop<br>Wasastraße 10<br>29229 Celle</div></div>
+        <div class="scan">Scan mich!</div>
+      </div>
+      <div class="qr-img">
+        <svg viewBox="0 0 100 100" shape-rendering="crispEdges"><rect width="100" height="100" fill="#fff"/><g fill="#101b30"><rect x="6" y="6" width="22" height="22"/><rect x="11" y="11" width="12" height="12" fill="#fff"/><rect x="14" y="14" width="6" height="6" fill="#101b30"/><rect x="72" y="6" width="22" height="22"/><rect x="77" y="11" width="12" height="12" fill="#fff"/><rect x="80" y="14" width="6" height="6" fill="#101b30"/><rect x="6" y="72" width="22" height="22"/><rect x="11" y="77" width="12" height="12" fill="#fff"/><rect x="14" y="80" width="6" height="6" fill="#101b30"/><rect x="34" y="6" width="6" height="6"/><rect x="46" y="6" width="6" height="6"/><rect x="58" y="6" width="6" height="6"/><rect x="40" y="18" width="6" height="6"/><rect x="52" y="18" width="6" height="6"/><rect x="6" y="34" width="6" height="6"/><rect x="18" y="34" width="6" height="6"/><rect x="34" y="34" width="6" height="6"/><rect x="46" y="34" width="6" height="6"/><rect x="58" y="34" width="6" height="6"/><rect x="70" y="34" width="6" height="6"/><rect x="82" y="34" width="6" height="6"/><rect x="12" y="46" width="6" height="6"/><rect x="28" y="46" width="6" height="6"/><rect x="40" y="46" width="6" height="6"/><rect x="64" y="46" width="6" height="6"/><rect x="76" y="46" width="6" height="6"/><rect x="6" y="58" width="6" height="6"/><rect x="22" y="58" width="6" height="6"/><rect x="46" y="58" width="6" height="6"/><rect x="58" y="58" width="6" height="6"/><rect x="82" y="58" width="6" height="6"/><rect x="40" y="70" width="6" height="6"/><rect x="52" y="70" width="6" height="6"/><rect x="64" y="70" width="6" height="6"/><rect x="76" y="70" width="6" height="6"/><rect x="88" y="70" width="6" height="6"/><rect x="34" y="82" width="6" height="6"/><rect x="46" y="82" width="6" height="6"/><rect x="58" y="82" width="6" height="6"/><rect x="70" y="82" width="6" height="6"/><rect x="82" y="82" width="6" height="6"/></g></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <span class="lbl">Follow us</span>
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1 .5-2 2-2h2V2h-3c-3 0-5 2-5 5v3H6v4h3v8h4z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 0 1.7.2 2.3.5.6.2 1.1.5 1.6 1s.8 1 1 1.6c.3.6.4 1.3.5 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.7-.5 2.3-.2.6-.5 1.1-1 1.6s-1 .8-1.6 1c-.6.3-1.3.4-2.3.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.7-.2-2.3-.5-.6-.2-1.1-.5-1.6-1s-.8-1-1-1.6c-.3-.6-.4-1.3-.5-2.3C2.4 15 2.4 14.7 2.4 12s0-3 .1-4.1c0-1 .2-1.7.5-2.3.2-.6.5-1.1 1-1.6s1-.8 1.6-1c.6-.3 1.3-.4 2.3-.5C9 2.4 9.3 2.4 12 2.4zm0 3.2A6.6 6.6 0 1018.6 12 6.6 6.6 0 0012 5.4zm0 10.9A4.3 4.3 0 1116.3 12 4.3 4.3 0 0112 16.3zm6.9-11.2a1.5 1.5 0 11-1.5-1.5 1.5 1.5 0 011.5 1.5z"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4a2.5 2.5 0 00-1.7 1.7C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.7 1.7c1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 001.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3z"/></svg></a>
+    </div>
+    <span class="divider"></span>
+    <span class="url">WWW.BARILLA.COM</span>
+  </div>
+</footer>
+
+<script>
+/* ---- Pasta-Form-Illustrationen (Inline-SVG, eigene Grafik) ---- */
+const shapes = {
+  penne:`<g fill="#e0b75a"><rect x="-26" y="-8" width="22" height="9" rx="4" transform="rotate(-30)"/><rect x="-4" y="-14" width="22" height="9" rx="4" transform="rotate(-30)"/><rect x="-14" y="6" width="22" height="9" rx="4" transform="rotate(-30)"/></g>`,
+  spaghetti:`<g stroke="#e0b75a" stroke-width="3" stroke-linecap="round"><line x1="-18" y1="-22" x2="-18" y2="22"/><line x1="-9" y1="-22" x2="-9" y2="22"/><line x1="0" y1="-22" x2="0" y2="22"/><line x1="9" y1="-22" x2="9" y2="22"/><line x1="18" y1="-22" x2="18" y2="22"/></g>`,
+  fusilli:`<g fill="none" stroke="#e0b75a" stroke-width="3.4" stroke-linecap="round"><path d="M-14 -22 q14 8 -14 16 q14 8 -14 16 q14 8 0 12"/><path d="M14 -22 q-14 8 14 16 q-14 8 14 16 q-14 8 0 12"/></g>`,
+  farfalle:`<g fill="#e0b75a"><path d="M0 0 L-22 -16 Q-30 0 -22 16 Z"/><path d="M0 0 L22 -16 Q30 0 22 16 Z"/><circle cx="0" cy="0" r="5" fill="#c99a3a"/></g>`,
+  lasagne:`<g fill="#e0b75a" stroke="#c99a3a"><rect x="-22" y="-18" width="44" height="11" rx="2"/><rect x="-22" y="-4" width="44" height="11" rx="2"/><rect x="-22" y="10" width="44" height="11" rx="2"/></g>`
+};
+function boxSVG(shape,name){
+  return `<svg viewBox="0 0 150 200"><rect x="20" y="10" width="110" height="184" rx="5" fill="#16243f"/><rect x="20" y="10" width="110" height="184" rx="5" fill="none" stroke="#c4a14e" stroke-width="1.5"/><text x="75" y="33" text-anchor="middle" fill="#c4a14e" font-family="Archivo" font-size="7" letter-spacing="2">DAL 1877</text><ellipse cx="75" cy="54" rx="40" ry="15" fill="#d42130"/><text x="75" y="59" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="15">Barilla</text><rect x="32" y="84" width="86" height="86" rx="4" fill="#0f1a2e"/><g transform="translate(75 127)">${shapes[shape]}</g><text x="75" y="184" text-anchor="middle" fill="#c4a14e" font-family="Archivo" font-size="7.5" letter-spacing="1.5">${name}</text></svg>`;
+}
+function jarSVG(color,name){
+  return `<svg viewBox="0 0 150 200"><rect x="55" y="6" width="40" height="14" rx="3" fill="#16243f"/><path d="M48 22 h54 a4 4 0 014 4 v136 a10 10 0 01-10 10 H54 a10 10 0 01-10 -10 V26 a4 4 0 014 -4z" fill="${color}"/><rect x="50" y="74" width="50" height="74" rx="3" fill="#f4efe5"/><ellipse cx="75" cy="94" rx="22" ry="9" fill="#d42130"/><text x="75" y="99" text-anchor="middle" fill="#fff" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="13">Barilla</text><text x="75" y="126" text-anchor="middle" fill="#16243f" font-family="Archivo" font-size="8" letter-spacing="1.5">${name}</text></svg>`;
+}
+const products=[
+  {art:boxSVG('penne','PENNE RIGATE N&#176;73'),kind:'Pasta',name:'Penne Rigate',desc:'Die geriffelten Röhrchen – perfekt für kräftige Saucen, die in jede Rille kriechen.',tag:'Klassiker'},
+  {art:boxSVG('spaghetti','SPAGHETTI N&#176;5'),kind:'Pasta',name:'Spaghetti N°5',desc:'Der Inbegriff italienischer Pasta. Al dente gekocht, ein Genuss zu allem.',tag:'Beliebt'},
+  {art:boxSVG('fusilli','FUSILLI N&#176;98'),kind:'Pasta',name:'Fusilli',desc:'Spiralen, die Sauce und Pesto besonders gut halten – auch im Salat ein Star.',tag:'Vielseitig'},
+  {art:boxSVG('farfalle','FARFALLE N&#176;65'),kind:'Pasta',name:'Farfalle',desc:'Die kleinen Schmetterlinge bringen Form und Freude auf jeden Teller.',tag:'Für Gäste'},
+  {art:jarSVG('#b5202b','BASILICO'),kind:'Sugo',name:'Sugo Basilico',desc:'Sonnengereifte Tomaten mit frischem Basilikum – die ehrliche Basis vieler Gerichte.',tag:'Bestseller'},
+  {art:jarSVG('#3f7a39','PESTO'),kind:'Pesto',name:'Pesto Genovese',desc:'Basilikum, Pinienkerne und Hartkäse – Ligurien im Glas, in Sekunden serviert.',tag:'Grün & frisch'},
+  {art:jarSVG('#a3201f','ARRABBIATA'),kind:'Sugo',name:'Arrabbiata',desc:'Tomate trifft Chili. Für alle, die es gern feurig italienisch mögen.',tag:'Pikant'},
+  {art:boxSVG('lasagne','LASAGNE'),kind:'Pasta',name:'Lasagne',desc:'Breite Platten für das Sonntagsgericht, das nach Familie und Zuhause schmeckt.',tag:'Ofengericht'}
+];
+function plateSVG(sauce,garnish){
+  return `<svg viewBox="0 0 220 150"><ellipse cx="110" cy="80" rx="92" ry="56" fill="#f4efe5"/><ellipse cx="110" cy="78" rx="78" ry="46" fill="#ece4d2"/><ellipse cx="110" cy="76" rx="60" ry="34" fill="${sauce}" opacity=".25"/><g stroke="#e0b75a" stroke-width="4" fill="none" stroke-linecap="round"><path d="M62 78 q30 -22 64 -4"/><path d="M70 90 q34 -16 72 2"/><path d="M58 66 q30 -14 70 4"/><path d="M80 98 q28 -10 58 4"/></g><g fill="${sauce}"><circle cx="92" cy="74" r="5"/><circle cx="128" cy="84" r="5"/><circle cx="110" cy="64" r="4"/></g>${garnish}</svg>`;
+}
+const basil=`<g fill="#5fa04b"><ellipse cx="110" cy="58" rx="9" ry="5" transform="rotate(18 110 58)"/><ellipse cx="100" cy="62" rx="7" ry="4" transform="rotate(-22 100 62)"/></g>`;
+const recipes=[
+  {art:plateSVG('#c0392b',basil),time:'20 Min',serv:'4 Pers.',lvl:'Einfach',name:'Spaghetti al Pomodoro',desc:'Tomate, Olivenöl, Basilikum – die schlichte Schönheit der italienischen Küche.'},
+  {art:plateSVG('#a3201f',''),time:'25 Min',serv:'4 Pers.',lvl:'Einfach',name:'Penne all’Arrabbiata',desc:'Würzige Tomatensauce mit Knoblauch und Chili für den feurigen Abend.'},
+  {art:plateSVG('#3f7a39',basil),time:'15 Min',serv:'4 Pers.',lvl:'Sehr einfach',name:'Fusilli al Pesto',desc:'In Minuten fertig: Fusilli mit cremigem Pesto Genovese und etwas Parmesan.'},
+  {art:plateSVG('#b5202b',basil),time:'70 Min',serv:'6 Pers.',lvl:'Mittel',name:'Lasagne al Forno',desc:'Schichten aus Pasta, Ragù und Béchamel – das ultimative Wohlfühlgericht.'},
+  {art:plateSVG('#c97f1f',basil),time:'30 Min',serv:'4 Pers.',lvl:'Einfach',name:'Farfalle Primavera',desc:'Bunte Schmetterlingsnudeln mit frischem Frühlingsgemüse und Kräutern.'},
+  {art:plateSVG('#d6b96e',''),time:'15 Min',serv:'2 Pers.',lvl:'Sehr einfach',name:'Spaghetti Aglio e Olio',desc:'Knoblauch, gutes Olivenöl, Peperoncino – Italiens schnellster Klassiker.'}
+];
+const clock=`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
+const ppl=`<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="8" r="2.5"/></svg>`;
+const star=`<svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>`;
+
+document.getElementById('prodGrid').innerHTML = products.map(p=>`
+  <article class="card"><div class="prod-art">${p.art}</div>
+  <div class="card-body"><span class="kind">${p.kind}</span><h3>${p.name}</h3><p>${p.desc}</p><span class="tag">${p.tag}</span></div></article>`).join('');
+
+document.getElementById('recGrid').innerHTML = recipes.map(r=>`
+  <article class="rec-card"><div class="rec-art">${r.art}</div>
+  <div class="rec-body"><div class="rec-meta"><span>${clock}${r.time}</span><span>${ppl}${r.serv}</span><span>${star}${r.lvl}</span></div>
+  <h3>${r.name}</h3><p>${r.desc}</p></div></article>`).join('');
+
+/* ---- Reveal on scroll ---- */
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---- Active nav highlight on scroll ---- */
+const links=[...document.querySelectorAll('#menu a')];
+const secs=links.map(a=>document.getElementById(a.dataset.sec)).filter(Boolean);
+const navObs=new IntersectionObserver((es)=>es.forEach(e=>{
+  if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.dataset.sec===e.target.id));}
+}),{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>navObs.observe(s));
+
+/* ---- Mobile menu ---- */
+const burger=document.querySelector('.burger');
+const menuEl=document.getElementById('menu');
+function closeMenu(){menuEl.classList.remove('open');burger.classList.remove('is-open');burger.setAttribute('aria-expanded','false');}
+burger.addEventListener('click',()=>{
+  const open=menuEl.classList.toggle('open');
+  burger.classList.toggle('is-open',open);
+  burger.setAttribute('aria-expanded',open?'true':'false');
+});
+document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',closeMenu));
+window.addEventListener('resize',()=>{if(window.innerWidth>900)closeMenu();});
+</script>
+</body>
+</html>
